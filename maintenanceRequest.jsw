@@ -1,0 +1,26 @@
+import wixData from 'wix-data';
+
+// Get maintenance requests by tenant
+export function getMaintenanceRequestsByTenant(tenantId) {
+    return wixData.query("MaintenanceRequests")
+        .eq("tenantId", tenantId)
+        .find();
+}
+
+// Add a new maintenance request
+export function addMaintenanceRequest(tenantId, requestText) {
+    return wixData.insert("MaintenanceRequests", {
+        tenantId: tenantId,
+        requestText: requestText,
+        resolved: false,
+        createdAt: new Date()
+    });
+}
+
+// Mark a maintenance request as resolved
+export function resolveMaintenanceRequest(requestId) {
+    return wixData.update("MaintenanceRequests", {
+        _id: requestId,
+        resolved: true
+    });
+}

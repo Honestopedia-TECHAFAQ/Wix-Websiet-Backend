@@ -1,0 +1,9 @@
+import { sendEmail } from 'backend/email'; 
+
+export function sendTenantMessage(email, message) {
+    sendEmail({
+        to: "your-email@example.com",  // Replace with your email
+        subject: `Message from ${email}`,
+        body: message
+    });
+}

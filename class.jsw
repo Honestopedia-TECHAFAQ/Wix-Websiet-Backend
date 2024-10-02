@@ -1,0 +1,18 @@
+import wixData from 'wix-data';
+
+// Get classes by location
+export function getClassesByLocation(locationId) {
+    return wixData.query("Class")
+        .eq("locationId", locationId)
+        .find();
+}
+
+// Add a new class
+export function addClass(locationId, title, description, date) {
+    return wixData.insert("Class", {
+        locationId: locationId,
+        title: title,
+        description: description,
+        date: date
+    });
+}

@@ -1,0 +1,18 @@
+import wixData from 'wix-data';
+
+// Get events by location
+export function getEventsByLocation(locationId) {
+    return wixData.query("Event")
+        .eq("locationId", locationId)
+        .find();
+}
+
+// Add a new event
+export function addEvent(locationId, title, description, date) {
+    return wixData.insert("Event", {
+        locationId: locationId,
+        title: title,
+        description: description,
+        date: date
+    });
+}

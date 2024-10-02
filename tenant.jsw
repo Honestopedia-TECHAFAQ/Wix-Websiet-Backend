@@ -1,0 +1,17 @@
+import wixData from 'wix-data';
+
+// Get tenants by location
+export function getTenantsByLocation(locationId) {
+    return wixData.query("Tenant")
+        .eq("locationId", locationId)
+        .find();
+}
+
+// Add a new tenant
+export function addTenant(name, email, locationId) {
+    return wixData.insert("Tenant", {
+        name: name,
+        email: email,
+        locationId: locationId
+    });
+}

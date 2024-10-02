@@ -1,0 +1,16 @@
+import wixData from 'wix-data';
+
+export function getAnnouncementsByLocation(locationId) {
+    return wixData.query("Announcement")
+        .eq("locationId", locationId)
+        .find();
+}
+
+export function addAnnouncement(locationId, title, message) {
+    return wixData.insert("Announcement", {
+        locationId: locationId,
+        title: title,
+        message: message,
+        createdAt: new Date()
+    });
+}

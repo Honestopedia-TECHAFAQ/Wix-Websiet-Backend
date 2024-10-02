@@ -1,0 +1,17 @@
+import wixData from 'wix-data';
+
+// Get gallery items by location
+export function getGalleryItems(locationId) {
+    return wixData.query("Gallery")
+        .eq("locationId", locationId)
+        .find();
+}
+
+// Add a new gallery item
+export function addGalleryItem(locationId, image, description) {
+    return wixData.insert("Gallery", {
+        locationId: locationId,
+        image: image,
+        description: description
+    });
+}

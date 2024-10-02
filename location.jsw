@@ -1,0 +1,14 @@
+import wixData from 'wix-data';
+
+// Get all locations
+export function getLocations() {
+    return wixData.query("Location").find();
+}
+
+// Add a new location
+export function addLocation(name, address) {
+    return wixData.insert("Location", {
+        name: name,
+        address: address
+    });
+}
